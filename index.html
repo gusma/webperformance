@@ -24,7 +24,7 @@ class: center, middle
 
 ![Default-aligned image](img/vomitrainbows.gif)
 
-## Web Performance Optimization a las piñas
+### Web Performance Optimization a las piñas
 
 Gustavo Malamud, Acámica DWFS. Segundo semestre (?) 2018.
 
@@ -34,7 +34,7 @@ Gustavo Malamud, Acámica DWFS. Segundo semestre (?) 2018.
 
 ---
 
-## Conceptos Clave
+### Conceptos Clave
 
 1. Reducción de Requests Innecesarios
 2. Reducción de Código Innecesario
@@ -48,7 +48,7 @@ Gustavo Malamud, Acámica DWFS. Segundo semestre (?) 2018.
 
 ---
 
-# ¿El problema?
+### ¿El problema?
 
 Desarrollamos sitios y apps cada vez más copadas pero en muchos casos nuestros productos son menos performantes de lo que deberían.
 
@@ -58,7 +58,7 @@ Desarrollamos sitios y apps cada vez más copadas pero en muchos casos nuestros 
 
 ---
 
-# 1. Reducción de Requests Innecesarios
+## 1. Reducción de Requests Innecesarios
 
 La idea: reducir el numero de llamados a archivos. 
 
@@ -74,7 +74,7 @@ En el CSS paths relativos (/carpeta/archivo.css) o absolutos (http://www.dominio
 
 ---
 
-# 2. Reducción de código Innecesario
+## 2. Reducción de código Innecesario
 
 Por ejhemplo, hay bloat en tus archivos CSS: Usar LESS / SASS y dejar que los preprocessors se peleen con el código "suboptimizado".
 
@@ -100,7 +100,7 @@ Por ejhemplo, hay bloat en tus archivos CSS: Usar LESS / SASS y dejar que los pr
 
 ---
 
-## Build Tools / Task Runners: Automatizando la Optimización
+### Build Tools / Task Runners: Automatizando la Optimización
 
 ![Default-aligned image](img/evolucionjs.png)
 
@@ -109,7 +109,7 @@ Tus mejores nuevos amigos: GulpJS, Grunt, WebPack.
 
 ---
 
-# Build Tools / Task Runners
+## Build Tools / Task Runners
 
 #### Qué son
 
@@ -131,7 +131,7 @@ Automatizan procesos, por ejemplo en Gulp:
 
 ---
 
-# 3. Compresión de Carga
+## 3. Compresión de Carga
 
 - GZipping desde el hosting. (Archivo htaccess- cuidado con el boton rojo!)
 
@@ -143,7 +143,7 @@ Archivo .htaaccess en carpeta base del sitio
 
 ---
 
-# 4. Compresión de Imágenes
+## 4. Compresión de Imágenes
 
 - Usar herramientas que permitan optimizar el peso de las imágenes (En Photoshop o Fireworks, por ejemplo?)
 
@@ -157,7 +157,7 @@ Archivo .htaaccess en carpeta base del sitio
  
 ---
 
-# 5. Tooling para Evitar Cuellos de Botella
+## 5. Tooling para Evitar Cuellos de Botella
 
 ### Pingdom Tools
 
@@ -174,7 +174,7 @@ Detectar donde está tardando más en cargar un sitio o una página en particula
 
 ???
 
-# 6. Tooling de Optimización
+## 6. Tooling de Optimización
 
 ### Google Developers PageSpeed Insights 
 (https://developers.google.com/speed/pagespeed/insights/?hl=es)
@@ -210,7 +210,7 @@ y luego:
 
 ---
 
-# Cacheo
+## Cacheo
 
 Otro recurso, no común:
 
@@ -220,7 +220,10 @@ Util contra ataques DDos, bueno para cacheo de elementos y DNS.
 
 ### Cacheo de elementos
 
-expire-headers
+[Expire headers](https://moz.com/blog/expires-headers-for-seo-why-you-should-think-twice-before-using-them)
+
+![Default-aligned image](img/expires.jpg)
+
 
 ---
 
@@ -232,6 +235,10 @@ expire-headers
 
 Shared hosting? VPS? Dedicado? Cloud? Now.sh? 
 Tiempo de respuesta que conlleva?
+
+## Pensar en qué corre (en el caso del html/ js /php)
+
+Nginx o Apache?
 
 ---
 
