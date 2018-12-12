@@ -1,27 +1,31 @@
 {
-  "name": "reveal.js",
-  "version": "3.7.0",
-  "main": [
-    "js/reveal.js",
-    "css/reveal.css"
-  ],
-  "homepage": "http://revealjs.com",
-  "license": "MIT",
-  "description": "The HTML Presentation Framework",
+  "name": "remark",
+  "homepage": "http://remarkjs.com/",
   "authors": [
-    "Hakim El Hattab <hakim.elhattab@gmail.com>"
+    "Ole Petter Bang <olepbang@gmail.com>"
   ],
-  "dependencies": {
-    "headjs": "~1.0.3"
-  },
-  "repository": {
-    "type": "git",
-    "url": "git://github.com/hakimel/reveal.js.git"
-  },
+  "description": "A simple, in-browser, markdown-driven slideshow tool.",
+  "main": "out/remark.js",
+  "keywords": [
+    "Markdown",
+    "Slides"
+  ],
+  "license": "MIT",
   "ignore": [
-    "**/.*",
-    "node_modules",
+    ".gitignore",
+    ".gitmodules",
+    ".jshintignore",
+    ".jshintrc",
+    "HISTORY.md",
+    "LICENSE",
+    "make.js",
+    "Makefile",
+    "package.json",
     "bower_components",
-    "test"
+    "node_modules",
+    "src",
+    "test",
+    "vendor",
+    "out/tests.js"
   ]
 }
