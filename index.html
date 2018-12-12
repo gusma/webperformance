@@ -5,10 +5,10 @@
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
     <style type="text/css">
       @import url(https://fonts.googleapis.com/css?family=Yanone+Kaffeesatz);
-      @import url(https://fonts.googleapis.com/css?family=Droid+Serif:400,700,400italic);
       @import url(https://fonts.googleapis.com/css?family=Ubuntu+Mono:400,700,400italic);
+	  @import url(https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,500,500i,700,700i,900);
 
-      body { font-family: 'Droid Serif'; }
+      body { font-family: 'Roboto'; }
       h1, h2, h3 {
         font-family: 'Yanone Kaffeesatz';
         font-weight: normal;
@@ -21,24 +21,239 @@
 
 class: center, middle
 
-# My Awesome Presentation
+
+![Default-aligned image](img/vomitrainbows.gif)
+
+## Primer / Herramientas de Optimizacion de Sitios Web
+
+Gustavo Malamud, Acámica DWFS. Segundo semestre (?) 2018.
 
 ???
 
-Notes for the _first_ slide!
+
 
 ---
 
-# Agenda
+# Conceptos Clave
 
-1. Introduction
-2. Deep-dive
-3. ...
+1. Reducción de Requests Innecesarios
 
-[NOTE]: Note that you need active internet connection to access remark.js script file
+2. Reducción de Código Innecesario
+
+3. Compresión de Carga (HTML / CSS / JS)
+
+4. Compresión de Imágenes
+
+5. Tooling para detectar cuellos de botella
+
+6. Tooling de Optimización
+
 ---
 
-# Introduction
+# ¿El problema?
+
+Desarrollamos sitios y apps cada vez más copadas pero en muchos casos nuestros productos son menos performantes de lo que deberían.
+
+![Default-aligned image](img/bounce-probability.png)
+
+[Fuente de la imagen](https://www.crazyegg.com/blog/speed-up-your-website/)
+
+---
+
+# 1. Reducción de Requests Innecesarios
+
+La idea: reducir el numero de llamados a archivos. 
+
+- Considerar: si el archivo es interno, externo.
+
+En el CSS paths relativos (/carpeta/archivo.css) o absolutos (http://www.dominio.com/carpeta/archivo.css).
+
+- Si es externo, se puede traer a local? (Librerias js, archivos css)
+
+- Vale concatenarlo? Se puede hacer asíncrono? (caso de ser css -- por sección, above the fold?).
+
+![Default-aligned image](img/monkey-keyboard.gif)
+
+---
+
+# 2. Reducción de código Innecesario
+
+Hay bloat en tus archivos CSS: Usar LESS / SASS y dejar que los preprocessors se peleen.
+
+### Que usar?
+
+- Built-in tools de PC: [Prepros](https://prepros.io/) / [Scout](https://mhs.github.io/scout-app/) / MAC: [CodeKit](http://www.codekitapp.com)
+
+- o Build Tools / Task Runners (GulpJS, Grunt, WebPack)
+
+.center[![Center-aligned image](img/panda.gif)]
+
+---
+
+### Por qué conviene LESS / SASS
+
+#### Subdividir en módulos
+
+![Default-aligned image](img/sass1.png)
+
+#### Variabilizar elementos para estandarizar
+
+![Default-aligned image](img/sass2.png)
+
+---
+
+## Build Tools / Task Runners: Automatizando la Optimización
+
+![Default-aligned image](img/evolucionjs.png)
+
+Tus mejores nuevos amigos: GulpJS, Grunt, WebPack. 
+(De acuerdo al gusto de cada uno!)
+
+---
+
+# Build Tools / Task Runners
+
+#### Qué son
+
+**Herramientas basadas en Node.js / JS para optimizar procesos de desarrollo web.**
+
+Comparación entre los 3 - https://da-14.com/blog/gulp-vs-grunt-vs-webpack-comparison-build-tools-task-runners
+
+#### Qué hacen
+
+Automatizan procesos, por ejemplo en Gulp:
+
+- Paso de LESS / SASS a CSS (gulp-sass). Reutilización de variables para reducir el código base.
+- Limpieza de bloat en archivos (gulp-clean-css, basado en clean-css)
+- Minificación de archivos (por ejemplo gulp-uglify para CSS)
+- Reducción de imágenes (gulp-imagemin).
+- Concatenación de files (gulp-concat).
+- Preview vivo del sitio en el que se trabaja, off-line (como el serve de nodejs, pero con herramientas como browser-sync).
+- No hace falta correrlo cada vez, puede ver si mientras corre, ustedes hacen algun cambio y lo guardan (gulp-watch)
+
+---
+
+# 3. Compresión de Carga
+
+- GZipping desde el hosting. (Archivo htaccess- cuidado con el boton rojo!)
+
+Archivo .htaaccess en carpeta base del sitio
+
+![Default-aligned image](img/gzip.png)
+
+[Link al articulo](https://varvy.com/pagespeed/enable-compression.html)
+
+---
+
+# 4. Compresión de Imágenes
+
+- Usar herramientas que permitan optimizar el peso de las imágenes (En Photoshop o Fireworks, por ejemplo?)
+
+- Usar herramientas web que permitan cortar el tamaño de imágenes
+
+- Evitar usar formatos de transparencia donde no sea necesario (PNGs- GIFs pesan más)
+
+- Si es posible usar CDNs inclusive para menor latencia?
+
+- Herramientas Externas: [TinyPNG](https://tinypng.com) / AlphaImage (Mac)
+ 
+---
+
+# 5. Tooling para Evitar Cuellos de Botella
+
+### Pingdom Tools
+
+(http://tools.pingdom.com)
+
+
+![Default-aligned image](img/pingdom1.png)
+
+---
+
+![Default-aligned image](img/pingdom2.png)
+
+Detectar donde está tardando más en cargar un sitio o una página en particular. 
+
+???
+
+# 6. Tooling de Optimización
+
+### Google Developers PageSpeed Insights 
+(https://developers.google.com/speed/pagespeed/insights/?hl=es)
+
+![Default-aligned image](img/pagespeed.png)
+
+Nivel básico, pero bueno para entender los primeros conceptos.
+
+---
+
+### Google Lighthouse 
+(https://developers.google.com/web/tools/lighthouse/?hl=es)
+
+![Default-aligned image](img/lighthouse.jpg)
+
+Operable desde proyectos propios, incluible a flujos de Grunt/ Gulp, excelente también para Apps. 
+Mejor aun utilizable desde linea de comandos:
+
+```npm install -g lighthouse```
+
+y luego:
+
+```lighthouse (url del sitio) --view```
+
+
+---
+
+### Another Flavor: YSlow (para no ser demasiado googleófilos)
+
+(http://yslow.org)
+
+![Default-aligned image](img/yslow.png)
+
+---
+
+# Cacheo
+
+Otro recurso, no común:
+
+### Cloudflare
+
+Util contra ataques DDos, bueno para cacheo de elementos y DNS.
+
+### Cacheo de elementos
+
+expire-headers
+
+---
+
+# Ultimas consideraciones
+
+![Default-aligned image](img/brainexplode.gif)
+
+## Pensar dónde hostean el proyecto
+
+Shared hosting? VPS? Dedicado? Cloud? Now.sh? 
+Tiempo de respuesta que conlleva?
+
+---
+
+# Recursos útiles de lectura:
+
+Nuestro nuevo Semi Dios: Steve Souders (https://stevesouders.com/)
+
+Smashing Magazine (http://www.smashingmagazine.com)
+
+CSS Tricks (http://www.css-tricks.com)
+
+---
+
+class: center, middle
+
+Hecho con [Remark.js](https://remarkjs.com/) y la ilusión de la torta de Guido. 
+
+
+![Default-aligned image](img/cake.jpg)
+
 
     </textarea>
     <script src="https://remarkjs.com/downloads/remark-latest.min.js" type="text/javascript">
